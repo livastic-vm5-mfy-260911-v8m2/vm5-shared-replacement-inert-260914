@@ -1,8 +1,1 @@
-pull_request_rules:
-  - name: VM5 attacker replacement shared config merge
-    conditions:
-      - base = vm5-shared-base-260914
-      - author = livastic-vm5-secondary-20260911
-    actions:
-      merge:
-        method: merge
+pull_request_rules: []
