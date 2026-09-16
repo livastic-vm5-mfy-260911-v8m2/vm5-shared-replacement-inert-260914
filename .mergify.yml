@@ -6,7 +6,7 @@ commands_restrictions:
       - sender = vm5-prefix-alias-never-allowed
 
 merge_queue:
-  mode: parallel
+  mode: serial
 
 queue_rules:
   - name: default
