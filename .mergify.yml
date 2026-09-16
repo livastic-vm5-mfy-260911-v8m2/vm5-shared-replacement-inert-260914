@@ -1,4 +1,9 @@
-pull_request_rules: []
+pull_request_rules:
+  - name: autoqueue vm5 special scope capacity probes
+    conditions:
+      - title ~= ^vm5 special scope capacity probe [AB]$
+    actions:
+      queue:
 
 merge_queue:
   mode: parallel
