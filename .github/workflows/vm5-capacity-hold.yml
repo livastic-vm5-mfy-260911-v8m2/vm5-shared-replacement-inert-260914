@@ -11,5 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Keep speculative check pending
-        run: sleep 180
+      - name: Keep speculative check pending then fail closed
+        run: |
+          sleep 180
+          exit 1
