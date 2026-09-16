@@ -1,17 +1,1 @@
 pull_request_rules: []
-
-commands_restrictions:
-  queue:
-    conditions:
-      - sender = vm5-multicommand-never-allowed
-
-merge_queue:
-  mode: serial
-
-queue_rules:
-  - name: default
-    batch_size: 1
-    queue_conditions: []
-    merge_conditions:
-      - label = vm5-multicommand-never-merge
-    merge_method: merge
