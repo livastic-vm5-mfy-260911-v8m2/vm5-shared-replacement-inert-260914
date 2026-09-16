@@ -1,0 +1,9 @@
+scopes:
+  source:
+    files:
+      trusted:
+        include:
+          - services/trusted/**/*
+      attacker-controlled-lane:
+        include:
+          - services/attacker/**/*
