@@ -14,5 +14,6 @@ queue_rules:
     batch_size: 1
     queue_conditions: []
     merge_conditions:
+      - check-success = hold
       - label = vm5-never-merge-capacity-20260917
     merge_method: merge
