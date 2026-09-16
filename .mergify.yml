@@ -1,1 +1,18 @@
 pull_request_rules: []
+
+merge_queue:
+  mode: parallel
+  max_parallel_checks: 2
+
+scopes:
+  source:
+    manual:
+  default_capacity: 1
+
+queue_rules:
+  - name: default
+    batch_size: 1
+    queue_conditions: []
+    merge_conditions:
+      - label = vm5-never-merge-capacity-20260917
+    merge_method: merge
