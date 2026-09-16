@@ -1,1 +1,2 @@
 vm5 special scope capacity probe A
+capacity reset A 20260917
