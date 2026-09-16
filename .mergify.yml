@@ -20,5 +20,4 @@ queue_rules:
     queue_conditions: []
     merge_conditions:
       - check-success = hold
-      - label = vm5-never-merge-capacity-20260917
     merge_method: merge
