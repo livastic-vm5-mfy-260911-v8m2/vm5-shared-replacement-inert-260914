@@ -9,9 +9,9 @@ permissions:
 jobs:
   hold:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 12
     steps:
       - name: Keep speculative check pending then fail closed
         run: |
-          sleep 180
+          sleep 600
           exit 1
