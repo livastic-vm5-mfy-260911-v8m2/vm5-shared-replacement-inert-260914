@@ -1,1 +1,2 @@
 vm5 custom scope guard live probe
+vm5 synchronize after owner guard
