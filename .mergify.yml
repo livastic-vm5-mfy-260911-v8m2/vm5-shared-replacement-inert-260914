@@ -1,21 +1,33 @@
 pull_request_rules:
-  - name: vm5 extends source positive control
+  - name: vm5 auto weak rule probe
     conditions:
-      - number = 52
-      - title = VM5 EXTENDS SOURCE POSITIVE 260918
-      - sender = livastic-vm5-secondary-20260911
+      - title = vm5 mixed queue weak
     actions:
-      comment:
-        message: VM5_EXTENDS_SOURCE_POSITIVE_260918
-  - name: vm5 extends source post-deselect canary
+      queue:
+        name: weak
+  - name: vm5 auto strong rule probe
     conditions:
-      - number = 52
-      - title = VM5 EXTENDS SOURCE POST DESELECT 260918
-      - sender = livastic-vm5-secondary-20260911
+      - title = vm5 mixed queue strong
     actions:
-      comment:
-        message: VM5_EXTENDS_SOURCE_POST_DESELECT_260918
+      queue:
+        name: strong
+
+merge_queue:
+  mode: serial
+  max_parallel_checks: 2
 
 queue_rules:
-  - name: default
+  - name: weak
+    batch_size: 2
     queue_conditions: []
+    merge_conditions:
+      - check-success = hold
+      - label = vm5-never-weak-merge-260917
+    merge_method: merge
+  - name: strong
+    batch_size: 2
+    queue_conditions: []
+    merge_conditions:
+      - check-success = hold
+      - label = vm5-never-strong-merge-260917
+    merge_method: merge
