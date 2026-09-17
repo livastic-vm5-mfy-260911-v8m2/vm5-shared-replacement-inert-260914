@@ -1,33 +1,20 @@
 pull_request_rules:
-  - name: vm5 auto weak rule probe
+  - name: vm5 negative failure-resolution probe
     conditions:
-      - title = vm5 mixed queue weak
+      - title ~= ^vm5 mixed queue (weak|strong)$
     actions:
       queue:
-        name: weak
-  - name: vm5 auto strong rule probe
-    conditions:
-      - title = vm5 mixed queue strong
-    actions:
-      queue:
-        name: strong
+        name: neg-resolution
 
 merge_queue:
   mode: serial
-  max_parallel_checks: 2
+  max_parallel_checks: 1
 
 queue_rules:
-  - name: weak
+  - name: neg-resolution
     batch_size: 2
+    batch_max_failure_resolution_attempts: -1
     queue_conditions: []
     merge_conditions:
-      - check-success = hold
-      - label = vm5-never-weak-merge-260917
-    merge_method: merge
-  - name: strong
-    batch_size: 2
-    queue_conditions: []
-    merge_conditions:
-      - check-success = hold
-      - label = vm5-never-strong-merge-260917
+      - check-success = @github-actions/hold
     merge_method: merge
