@@ -31,3 +31,8 @@ queue_rules:
       - check-success = hold
       - label = vm5-never-strong-merge-260917
     merge_method: merge
+
+commands_restrictions:
+  queue:
+    conditions:
+      - sender-permission >= admin
