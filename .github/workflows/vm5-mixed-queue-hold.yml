@@ -1,0 +1,15 @@
+name: vm5-mixed-queue-hold
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  hold:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Hold speculative batch for observation
+        run: sleep 120
