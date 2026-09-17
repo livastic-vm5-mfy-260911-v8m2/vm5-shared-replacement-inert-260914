@@ -11,17 +11,5 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Fail only Mergify speculative batch PRs
-        env:
-          HEAD_REF: ${{ github.head_ref }}
-        run: |
-          case "$HEAD_REF" in
-            mergify/merge-queue/*)
-              echo "intentional synthetic batch failure"
-              exit 1
-              ;;
-            *)
-              echo "source PR check succeeds"
-              exit 0
-              ;;
-          esac
+      - name: Hold speculative batch for observation
+        run: sleep 120
