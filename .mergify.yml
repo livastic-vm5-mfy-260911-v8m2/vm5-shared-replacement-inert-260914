@@ -1,8 +1,33 @@
 pull_request_rules:
-  - name: vm5 multi-ruleset aggregation probe
+  - name: vm5 auto weak rule probe
     conditions:
-      - number = 22
-      - label = vm5-enable-multi-ruleset-probe
+      - title = vm5 mixed queue weak
     actions:
-      merge:
-        method: merge
+      queue:
+        name: weak
+  - name: vm5 auto strong rule probe
+    conditions:
+      - title = vm5 mixed queue strong
+    actions:
+      queue:
+        name: strong
+
+merge_queue:
+  mode: serial
+  max_parallel_checks: 2
+
+queue_rules:
+  - name: weak
+    batch_size: 2
+    queue_conditions: []
+    merge_conditions:
+      - check-success = hold
+      - label = vm5-never-weak-merge-260917
+    merge_method: merge
+  - name: strong
+    batch_size: 2
+    queue_conditions: []
+    merge_conditions:
+      - check-success = hold
+      - label = vm5-never-strong-merge-260917
+    merge_method: merge
