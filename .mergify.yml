@@ -1,15 +1,17 @@
 pull_request_rules:
   - name: vm5 extends source positive control
     conditions:
-      - number = 32
+      - number = 52
       - title = VM5 EXTENDS SOURCE POSITIVE 260918
+      - sender = livastic-vm5-secondary-20260911
     actions:
       comment:
         message: VM5_EXTENDS_SOURCE_POSITIVE_260918
   - name: vm5 extends source post-deselect canary
     conditions:
-      - number = 32
+      - number = 52
       - title = VM5 EXTENDS SOURCE POST DESELECT 260918
+      - sender = livastic-vm5-secondary-20260911
     actions:
       comment:
         message: VM5_EXTENDS_SOURCE_POST_DESELECT_260918
