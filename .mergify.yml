@@ -1,16 +1,4 @@
-pull_request_rules:
-  - name: vm5 auto weak rule probe
-    conditions:
-      - title = vm5 mixed queue weak
-    actions:
-      queue:
-        name: weak
-  - name: vm5 auto strong rule probe
-    conditions:
-      - title = vm5 mixed queue strong
-    actions:
-      queue:
-        name: strong
+pull_request_rules: []
 
 merge_queue:
   mode: serial
